@@ -5,6 +5,16 @@ import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
 const Hero = () => {
+  const handleScroll = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const navHeight = 100; // adjust to match your FloatingNav height
+      const top =
+        section.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="pb-20 pt-36">
       {/**
@@ -57,10 +67,10 @@ const Hero = () => {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi! I&apos;m Maaz, a Next.js Developer based in Croatia.
+            Hi! I&apos;m Maaz, a Next.js Developer based in Pakistan.
           </p>
 
-          <a href="#about">
+          <a onClick={() => handleScroll("projects")}>
             <MagicButton
               title="Show my work"
               icon={<FaLocationArrow />}
